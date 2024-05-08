@@ -1,30 +1,26 @@
-import { Component } from "react";
-import "./App.css"
-import elephant from "./images/elephant.jpeg";
+import React, { Component } from "react";
+import "./App.css";
+import elephant from "./images/elephant.jpeg"; 
+import { imageData} from './components/DataComponent'; 
 
-export default class AppClass extends Component{
-  
-  imageData = ()=>{
-    let data = [
-      {
-        id:1,
-        img:elephant
-      },
-      {
-        id:2,
-        img:elephant
-      },
-      {
-        id:3,
-        img:elephant
-      },
-      {
-        id:4,
-        img:elephant
-      }
-    ]
-    return data;
+class AppClass extends Component {
+  render() {
+    const imgData = imageData(); 
+    const imageElements = [];
+    for (let i = 0; i < imgData.length; i++) {
+      imageElements.push(
+        <img key={imgData[i].id} src={imgData[i].img} alt={imgData[i].id} />
+      );
+    }
+    return (
+      <div className="App">
+        <h1>Kalvium gallary</h1>
+        <div className="image-container">
+          {imageElements}
+        </div>
+      </div>
+    );
   }
-
-  // code here
 }
+
+export default AppClass;
